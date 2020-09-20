@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel do Expedito
+                    Laravel do Expedito 2
                 </div>
 
                 <div class="links">
