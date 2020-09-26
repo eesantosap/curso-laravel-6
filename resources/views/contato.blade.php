@@ -6,5 +6,6 @@
     </head>
     <body>
         <h1>Contato</h1>
+        {!! $teste !!}
     </body>
 </html>

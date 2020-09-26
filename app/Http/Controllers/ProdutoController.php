@@ -6,6 +6,25 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+
+    protected $request;
+
+    public function __construct(Request $request)
+    {
+
+        $this->request = $request;
+        //$this->middleware('auth');
+        //$this->middleware('auth')->only('create');
+        /*$this->middleware('auth')->only([
+            'create', 'store'
+            ]);*/
+        //$this->middleware('auth')->except('index');
+        $this->middleware('auth')->except([
+            'index', 'show'
+            ]);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +32,14 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        $teste = 123;
+        $teste2 = 'Testando Existência de Variável';
+        $teste3 = [];
+        $teste4 = 2;
+        //$teste = '<h1>Mostrando código real</h1>';
+        //return view('contato', [ 'teste' => $teste ]);
+        //return view('contato', compact('teste'));
+        return view('admin.pages.produtos.index', compact('teste', 'teste2', 'teste3', 'teste4'));
     }
 
     /**
@@ -23,7 +49,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return "Criando um novo Produto";
     }
 
     /**
@@ -34,7 +60,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Cadastrando Produto";
     }
 
     /**
@@ -45,7 +71,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        //
+        return "Mostrando detalhe do Produto {$id}";
     }
 
     /**
@@ -56,7 +82,7 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Editando Produto {$id}";
     }
 
     /**
@@ -68,7 +94,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return "Atualizando Produto {$id}";
     }
 
     /**
@@ -79,6 +105,6 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "Excluindo Produto {$id}";
     }
 }
