@@ -19,9 +19,9 @@ class ProdutoController extends Controller
             'create', 'store'
             ]);*/
         //$this->middleware('auth')->except('index');
-        $this->middleware('auth')->except([
-            'index', 'show'
-            ]);
+        // $this->middleware('auth')->except([
+        //     'index', 'show'
+        //     ]);
 
     }
 
@@ -49,7 +49,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return "Criando um novo Produto";
+        return view('admin.pages.produtos.create');
     }
 
     /**
@@ -60,7 +60,25 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        return "Cadastrando Produto";
+        //dd($request->all()); // Pega todos os dados
+        //dd($request->only(['nome', 'descricao'])); // Pega somente o nome
+        //dd($request->nome);
+        //dd($request->has('nome')); // true ou false
+        //dd($request->input('nome', 'valor, caso não tenha nenhuma entrada'));
+        //dd($request->input('teste', 'valor, caso não tenha nenhuma entrada e nem o campo'));
+        //dd($request->except('_token')); // traz todos os campos exceto o _token
+
+        if ($request->file('fotos')->isValid()) {
+            //dd($request->fotos->extension()); //Saber a extensão
+            //dd($request->fotos);
+            //dd($request->fotos->getClientOriginalName()); // Saber nome original
+            //dd($request->file('fotos')->store('produtos/teste'));
+
+            $nameFile = $request->name . '.' . $request->fotos->extension();
+            dd($request->file('fotos')->storeAs('produtos', $nameFile));
+        
+        }
+
     }
 
     /**
@@ -82,7 +100,7 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        return "Editando Produto {$id}";
+        return view('admin.pages.produtos.edit', compact('id'));
     }
 
     /**
@@ -94,7 +112,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "Atualizando Produto {$id}";
+        dd("Atualizando Produto {$id}");
     }
 
     /**

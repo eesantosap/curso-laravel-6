@@ -6,6 +6,10 @@
 
     <h1>Exibindo Produtos</h1>
 
+    <a href="{{ route('produtos.create') }}">Cadastrar</a>
+
+    {{-- comentáriodentrodoblade --}}
+
     @if($teste === 123)
         <p>Confirmado! É verdadeiro</p>
         @elseif (@teste == 123)
