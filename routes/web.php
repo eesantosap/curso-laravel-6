@@ -3,10 +3,11 @@
 Route::resource('produtos', 'ProdutoController');
 Route::get('contato', 'Admin\TesteController@teste');
 
+/*
 Route::get('login', function(){
     return 'Login';
 })->name('login');
-
+*/
 
 /*
 Route::resource('produtos', 'ProdutoController')->middleware('auth');
